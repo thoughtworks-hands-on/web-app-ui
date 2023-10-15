@@ -1,50 +1,22 @@
-import { useDispatch, useSelector } from "react-redux";
 import { Button, Header, Accordion, Carousel } from "components";
-
-import { IState } from "../../redux/rootReducer";
-import imageOne from "../../images/carousel/alessandro-carrarini-YKa1kxa9YQo-unsplash.jpg";
-import imageTwo from "../../images/carousel/enrica-tancioni-kvpRkt9E1D4-unsplash.jpg";
-import imageThree from "../../images/carousel/kevin-bessat-U3k1zKLcyCc-unsplash.jpg";
-import imageFour from "../../images/carousel/massimiliano-morosinotto-lUuUQo4PFV8-unsplash.jpg";
 
 import "./home.scss";
 import { useEffect, useState } from "react";
-import axios from "axios";
-
-const accordionData = [
-  {
-    title: "section 1",
-    content:
-      "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-  },
-  {
-    title: "section 2",
-    content:
-      "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-  },
-  {
-    title: "section 3",
-    content:
-      "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-  },
-];
-
-const ImageData = [
-  {
-    image: imageOne,
-  },
-  {
-    image: imageTwo,
-  },
-  {
-    image: imageThree,
-  },
-  {
-    image: imageFour,
-  },
-];
+import axiosInstance from "../../api";
 
 const Home = () => {
+
+  const [movies, setMovies] = useState<any>([]);
+
+  useEffect(() => {
+    console.log("dekbj");
+    axiosInstance.get("https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc").then((res: any) => {
+      setMovies(res.data.results);
+      console.log(res.data);
+    }).catch(err => {
+      console.error(err);
+    });
+  }, []);
 
   return (
     <main className="home-page">
@@ -52,6 +24,16 @@ const Home = () => {
       {/* <div>
         <Carousel className="carousel" data={ImageData} />
       </div> */}
+      <div>
+      <h1>Top Movies</h1>
+      <ul>
+        {movies.map((movie: any) => (
+          <li key={movie.id}>
+            <img src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} alt={movie.title} />
+          </li>
+        ))}
+      </ul>
+    </div>
     </main>
   );
 };

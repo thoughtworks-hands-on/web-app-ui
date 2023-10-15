@@ -19,9 +19,11 @@ export interface AxiosInstanceWithIndexSignature extends AxiosInstance {
 }
 
 export const instance: AxiosInstanceWithIndexSignature = axios.create({
-  baseURL: "/api/",
-  timeout: 1000,
-  headers: { "Content-Type": "application/json" },
+  baseURL: "https://api.themoviedb.org/3/",
+  headers: {
+    "Content-Type": "application/json",
+    "Authorization": `Bearer ${process.env.REACT_APP_TMDB_API_KEY}`,
+  },
 });
 
 /**
