@@ -104,3 +104,5 @@ cypress/videos
 .lighthouseci
 .DS_Store
 storybook-static/
+
+*.env*

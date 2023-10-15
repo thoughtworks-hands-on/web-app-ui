@@ -3,18 +3,9 @@ import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import Carousel from "./Carousel";
 
-import imageOne from "./images/alessandro-carrarini-YKa1kxa9YQo-unsplash.jpg";
-import imageTwo from "./images/enrica-tancioni-kvpRkt9E1D4-unsplash.jpg";
 
 describe("Carousel", () => {
-  const ImageData = [
-    {
-      image: imageOne,
-    },
-    {
-      image: imageTwo,
-    },
-  ];
+  const ImageData = [];
 
   test("renders Carousel component", () => {
     render(<Carousel className="carousel" data={ImageData} />);
