@@ -7,7 +7,6 @@ const Home = () => {
 
   return (
     <main className="home-page">
-      <Header className="home-header" headerText="Welcome to my Home Page" />
       {/* <div>
         <Carousel className="carousel" data={ImageData} />
       </div> */}
