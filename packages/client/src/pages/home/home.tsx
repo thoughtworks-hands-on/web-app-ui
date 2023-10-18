@@ -1,5 +1,3 @@
-import { Button, Header, Accordion, Carousel } from "components";
-
 import "./home.scss";
 import axiosInstance from "../../api";
 

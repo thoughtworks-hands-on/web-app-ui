@@ -85,8 +85,7 @@
 2.  Move to the appropriate directory: `cd <YOUR_PROJECT_NAME>`.
 3.  Run `yarn link-all` to link all the packages.
 4.  Run `yarn install` to install all the dependencies required to bootstrap the project.
-5.  Run `yarn workspace components build` to build the components library.
-6.  Run `yarn workspace client start` to see the react catalyst at [`http://localhost:3000`](http://localhost:3000).
+5.  Run `yarn workspace client start` to see the react catalyst at [`http://localhost:3000`](http://localhost:3000).
 
 ### Documentation
 
